@@ -1,0 +1,258 @@
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Light mode (default) ───────────────────────────────── */
+  :root {
+    --brand:        #005F2D;
+    --lime:         #AECC1E;
+    --ink:          #0B1120;
+    --ink-soft:     #1E2A3B;
+    --border:       #E2E8F0;
+    --border-mid:   #CBD5E1;
+    --surface:      #F8FAFC;
+    --ease-expo:    cubic-bezier(0.16,1,0.3,1);
+
+    /* Semantic tokens */
+    --bg-page:      #ffffff;
+    --bg-card:      #ffffff;
+    --bg-subtle:    #F8FAFC;
+    --bg-muted:     #F1F5F9;
+    --text-base:    #0B1120;
+    --text-soft:    #1E2A3B;
+    --text-muted:   #64748B;
+    --text-faint:   #94A3B8;
+    --ring:         rgba(0, 95, 45, 0.15);
+    --shadow-card:  0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-raised:0 4px 12px rgba(0,0,0,0.08);
+
+    /* ── Aliases used by public pages (Demo, Contact, EarlyAccess) ── */
+    --primary:      #005F2D;
+    --primary-10:   rgba(0, 95, 45, 0.10);
+    --primary-30:   rgba(0, 95, 45, 0.30);
+    --text:         #0B1120;
+    --bg:           #ffffff;
+    --surface-2:    #F8FAFC;
+    --surface-80:   rgba(255, 255, 255, 0.85);
+  }
+
+  /* ── Dark mode ──────────────────────────────────────────── */
+  .dark {
+    --brand:        #22A05C;
+    --lime:         #B8C81A;
+    --ink:          #F1F5F9;
+    --ink-soft:     #E2E8F0;
+    --border:       #1A2535;
+    --border-mid:   #243044;
+    --surface:      #0C1520;
+    --ease-expo:    cubic-bezier(0.16,1,0.3,1);
+
+    --bg-page:      #070D18;
+    --bg-card:      #0D1A28;
+    --bg-subtle:    #101E2C;
+    --bg-muted:     #142232;
+    --text-base:    #EDF2F7;
+    --text-soft:    #C8D8E8;
+    --text-muted:   #7A9AB8;
+    --text-faint:   #445A70;
+    --ring:         rgba(34, 160, 92, 0.20);
+    --shadow-card:  0 1px 4px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+    --shadow-raised:0 6px 24px rgba(0,0,0,0.65);
+
+    /* ── Aliases used by public pages (Demo, Contact, EarlyAccess) ── */
+    --primary:      #22A05C;
+    --primary-10:   rgba(34, 160, 92, 0.10);
+    --primary-30:   rgba(34, 160, 92, 0.30);
+    --text:         #EDF2F7;
+    --bg:           #070D18;
+    --surface-2:    #101E2C;
+    --surface-80:   rgba(7, 13, 24, 0.85);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-family: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    direction: rtl;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-base);
+    overflow-x: hidden;
+    min-width: 320px;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #root { min-height: 100dvh; }
+
+  ::selection { background: #AECC1E33; color: var(--ink); }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  :focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--text-base);
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; }
+}
+
+@layer components {
+  /* ── Buttons ───────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+           font-semibold rounded-lg transition-all duration-200
+           disabled:opacity-40 disabled:pointer-events-none
+           select-none whitespace-nowrap;
+  }
+  .btn-sm  { @apply btn text-xs  px-3.5 py-2;   }
+  .btn-md  { @apply btn text-sm  px-5   py-2.5;  }
+  .btn-lg  { @apply btn text-base px-7  py-3.5;  }
+
+  .btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900;
+  }
+  .btn-lime {
+    @apply btn bg-lime text-ink font-bold hover:bg-lime-dark active:bg-lime-dark;
+  }
+  .btn-outline {
+    @apply btn border;
+    background: var(--bg-card);
+    color: var(--text-base);
+    border-color: var(--border-mid);
+  }
+  .btn-outline:hover {
+    background: var(--bg-muted);
+  }
+  .btn-ghost {
+    @apply btn;
+    color: var(--text-muted);
+  }
+  .btn-ghost:hover {
+    background: var(--bg-muted);
+    color: var(--text-base);
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+
+  /* ── Cards ─────────────────────────────────────── */
+  .card {
+    @apply rounded-xl border;
+    background: var(--bg-card);
+    border-color: var(--border);
+    box-shadow: var(--shadow-card);
+  }
+  .card-padded { @apply card p-5 sm:p-6; }
+
+  /* ── Input ─────────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-lg border
+           placeholder-slate-400 text-sm
+           min-h-[44px] transition-all duration-150
+           focus:outline-none;
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--text-base);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  .input-field:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+  .input-field.error {
+    @apply border-red-400;
+    box-shadow: 0 0 0 3px rgba(248,113,113,0.15);
+  }
+
+  /* ── Chrome autofill dark-mode override ────────────── */
+  .input-field:-webkit-autofill,
+  .input-field:-webkit-autofill:hover,
+  .input-field:-webkit-autofill:focus,
+  .input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-card) inset !important;
+    box-shadow: 0 0 0px 1000px var(--bg-card) inset !important;
+    -webkit-text-fill-color: var(--text-base) !important;
+    caret-color: var(--text-base) !important;
+    border-color: var(--border) !important;
+    transition: background-color 99999s ease-in-out 0s;
+  }
+  .label {
+    @apply block text-sm font-medium mb-1.5;
+    color: var(--text-soft);
+  }
+
+  /* ── Badge ─────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1
+           rounded-full text-xs font-semibold tracking-wide;
+  }
+  .badge-green  { @apply badge bg-brand-100 text-brand-700;          }
+  .badge-amber  { @apply badge bg-amber-100 text-amber-700;          }
+  .badge-red    { @apply badge bg-red-100   text-red-700;            }
+  .badge-gray   { @apply badge text-slate-600; background: var(--bg-muted); }
+  .badge-blue   { @apply badge bg-blue-100  text-blue-700;           }
+  .badge-lime   { @apply badge bg-lime-light text-brand-800;         }
+
+  /* ── Layout helpers ─────────────────────────────── */
+  .page-wrap    { @apply w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-gap  { @apply py-16 sm:py-20 lg:py-24; }
+
+  /* ── Divider ────────────────────────────────────── */
+  .rule { @apply border-t; border-color: var(--border); }
+
+  /* ── Skeleton ───────────────────────────────────── */
+  .skeleton { @apply rounded animate-pulse; background: var(--bg-muted); }
+
+  /* ── Legacy compat ──────────────────────────────── */
+  .page-container {
+    @apply w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8;
+  }
+}
+
+@layer utilities {
+  .delay-75   { animation-delay: 75ms; }
+  .delay-100  { animation-delay: 100ms; }
+  .delay-150  { animation-delay: 150ms; }
+  .delay-200  { animation-delay: 200ms; }
+  .delay-300  { animation-delay: 300ms; }
+  .delay-500  { animation-delay: 500ms; }
+  .delay-700  { animation-delay: 700ms; }
+  .text-balance { text-wrap: balance; }
+  .gpu { will-change: transform, opacity; }
+  .num { font-variant-numeric: lining-nums tabular-nums; }
+  .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

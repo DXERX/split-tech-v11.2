@@ -1,0 +1,17 @@
+{
+  "name": "splittech-api",
+  "version": "1.0.0",
+  "description": "Split Intelligence API Gateway — replaces all Supabase Edge Functions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "pg": "^8.13.1",
+    "google-auth-library": "^9.14.0"
+  }
+}

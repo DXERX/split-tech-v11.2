@@ -1,0 +1,18 @@
+{
+  "store_id": "REPLACE_WITH_STORE_ID",
+  "api_key": "REPLACE_WITH_ENGINE_API_KEY",
+  "rtsp_url": "rtsp://user:password@camera-ip:554/stream",
+  "staff_count": 0,
+  "working_hours": {
+    "start": 17,
+    "end": 5
+  },
+  "cameras": [
+    {
+      "camera_id": "camera_01",
+      "name": "Main Camera",
+      "rtsp_url": "rtsp://user:password@camera-ip:554/stream",
+      "is_door": false
+    }
+  ]
+}
